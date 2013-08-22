@@ -105,6 +105,10 @@ Rails.application.routes.draw do
     match "#{i}(/:action(/:id))", :to => i, :id => nil, :format => false
   end
 
+  #  edx - merge articles
+  match "/admin/content/merge/:id" => "admin/content#merge",:as => 'admin/content/merge'
+
+
   # Admin/XController
   %w{advanced cache categories comments content profiles feedback general pages
      resources sidebar textfilters themes trackbacks users settings tags redirects seo post_types }.each do |i|
