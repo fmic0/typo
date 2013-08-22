@@ -37,6 +37,23 @@ class Admin::ContentController < Admin::BaseController
     new_or_edit
   end
 
+  # edx - method for merging 2 articles into 1
+  def merge
+      @article = Article.find(params[:id])
+      if params[:merge_with] and params[:merge_with] != ""
+         if !Article.find_by_id(params[:merge_with]).nil? and Article.find_by_id(params[:merge_with]) != Article.find(params[:id])
+              @article = @article.merge_with(params[:merge_with])
+              flash[:warning] = _("The Article ID #{params[:id]} has been merged with #{params[:merge_with]} ")
+         else
+              flash[:error] = _("The Article ID cannot be found or is not valid (#{params[:merge_with]}) ")
+         end
+      else
+         flash[:error] = _("The Article ID to be merged is null ")
+      end
+      redirect_to "/admin/content/edit/#{params[:id]}"
+      return
+  end
+  # edx ---
   def destroy
     @record = Article.find(params[:id])
 
