@@ -60,7 +60,7 @@ class Article < Content
        ##        comment.save! 
        ##     end
        end 
-       article.delete
+       ## article.delete
        return self
      end
      nil
