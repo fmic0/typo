@@ -37,7 +37,7 @@ class Admin::ContentController < Admin::BaseController
     new_or_edit
   end
 
-
+ # edx 
   def merge
       @article = Article.find(params[:id])
       if params[:merge_with] and params[:merge_with] != ""

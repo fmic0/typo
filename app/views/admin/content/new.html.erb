@@ -3,10 +3,7 @@
 <%= render "admin/shared/edit", { :form_type => "article", :form_action => { :action => "new", :id => @article.id , :class => ('autosave')} } %>
 
 <% if (@article.id && @current_user.admin?) %>
-       <%= render "admin/content/articlemerge" %>
+    <%= render "admin/content/articlemerge" %>
 <% end %>
-
-
-
 
 

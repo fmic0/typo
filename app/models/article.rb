@@ -22,12 +22,6 @@ class Article < Content
   has_many :categorizations
   has_many :categories, :through => :categorizations
   has_many :triggers, :as => :pending_item
-  # edx -----
-  # def transfer_comments
-  #  reload_associated_comments
-     #super
-  # end
-  # edx -----
   has_many :comments,   :dependent => :destroy, :order => "created_at ASC" do
 
     # Get only ham or presumed_ham comments
@@ -50,7 +44,6 @@ class Article < Content
 
   has_and_belongs_to_many :tags
   # edx -----merges the current Article with the input one; if applicable, reassigns the related comments
-
   def merge_with(id)
     @merge_with = id
     article = Article.find(@merge_with)
