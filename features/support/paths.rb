@@ -17,13 +17,15 @@ module NavigationHelpers
       '/'
     when /^the new article page$/
       '/admin/content/new'
-
+    when /the admin content edit page for "(.+)"/
+       "/admin/content/edit/" + Article.find_by_title($1).id.to_s
+    when /the admin content index page/
+       '/admin/content/index'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
-
     else
       begin
         page_name =~ /^the (.*) page$/

@@ -31,7 +31,7 @@ module WithinHelpers
 end
 World(WithinHelpers)
 
-Given /^the blog is set up$/ do
+Given /^the blog is set up $/ do
   Blog.default.update_attributes!({:blog_name => 'Teh Blag',
                                    :base_url => 'http://localhost:3000'});
   Blog.default.save!
@@ -77,6 +77,8 @@ When /^(?:|I )press "([^"]*)"$/ do |button|
   click_button(button)
 end
 
+
+
 When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
 end
@@ -88,6 +90,8 @@ end
 When /^(?:|I )fill in "([^"]*)" for "([^"]*)"$/ do |value, field|
   fill_in(field, :with => value)
 end
+
+
 
 # Use this to fill in an entire form with data from a table. Example:
 #
@@ -185,6 +189,7 @@ Then /^the "([^"]*)" field(?: within (.*))? should not contain "([^"]*)"$/ do |f
     end
   end
 end
+
 
 Then /^the "([^"]*)" field should have the error "([^"]*)"$/ do |field, error_message|
   element = find_field(field)
