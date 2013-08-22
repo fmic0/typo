@@ -50,6 +50,7 @@ class Article < Content
 
   has_and_belongs_to_many :tags
   # edx -----merges the current Article with the input one; if applicable, reassigns the related comments
+
   def merge_with(id)
     @merge_with = id
     article = Article.find(@merge_with)
