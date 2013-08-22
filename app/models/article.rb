@@ -45,6 +45,29 @@ class Article < Content
 
   has_and_belongs_to_many :tags
 
+  # edx -----merges the current Article with the input one; if applicable, reassigns the related comments
+  def merge_with(id)
+    @merge_with = id
+    article = Article.find(@merge_with)
+    if !article.nil?
+
+      text = body + article.body
+      self.body += article.body
+      self.save!
+      if  !article.comments.empty? 
+           article.comments.each do |comment|
+              comment.article_id = self.id
+              comment.save! 
+           end 
+      end
+      article.delete
+      return self
+    end
+    nil
+  end
+  # edx ---
+
+
   before_create :set_defaults, :create_guid
   after_create :add_notifications
   before_save :set_published_at, :ensure_settings_type, :set_permalink
