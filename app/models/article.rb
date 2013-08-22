@@ -53,14 +53,14 @@ class Article < Content
 
        text = body + article.body
        self.body += article.body
-       ##self.save!
+       self.save!
        if  !article.comments.empty? 
-            article.comments.each do |comment|
-               comment.article_id = self.id
+       ##     article.comments.each do |comment|
+       ##        comment.article_id = self.id
        ##        comment.save! 
-            end 
-       end
-       ##article.delete
+       ##     end
+       end 
+       article.delete
        return self
      end
      nil
