@@ -12,9 +12,20 @@
    #
    def path_to(page_name)
      case page_name
-
      when /^the home\s?page$/
        '/'
+     # edx - added paths 
+     when /^the new article page$/
+       '/admin/content/new'
+     when /the admin content edit page for "(.+)"/
+        "/admin/content/edit/" + Article.find_by_title($1).id.to_s
+     when /the admin content index page/
+        '/admin/content/index'
+     when /the admin content page/
+        '/admin/content'
+     when /the new categories page/
+        '/admin/categories/new'
+     # edx 
 
      # Add more mappings here.
      # Here is an example that pulls values out of the Regexp:
