@@ -26,9 +26,8 @@ class Admin::CategoriesController < Admin::BaseController
   def new_or_edit
     @categories = Category.find(:all)
     # edx fix --- error when a new category is selected
-    # @category = Category.find(params[:id])
-
-    @category = (params[:id].nil?) ? Category.new() : Category.find(params[:id])
+    @category = Category.find(params[:id])
+    # @category = (params[:id].nil?) ? Category.new() : Category.find(params[:id])
     # edx fix
     @category.attributes = params[:category]
     if request.post?
