@@ -107,7 +107,7 @@ Rails.application.routes.draw do
 
   #  edx - merge articles
   match "/admin/content/merge/:id" => "admin/content#merge",:as => 'admin/content/merge'
-
+  match "/admin/categories/new" => "admin/categories#new",:as => 'admin/categories/new'
 
   # Admin/XController
   %w{advanced cache categories comments content profiles feedback general pages
